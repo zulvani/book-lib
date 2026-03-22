@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: book-lib-db
+    environment:
+      POSTGRES_DB: book-lib
+      POSTGRES_USER: aguszulvani
+      POSTGRES_PASSWORD: yourpassword
+    ports:
+      - "5435:5432"       # host:container — container always uses 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aguszulvani -d book-lib"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: book-lib-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5435/book-lib
+      SPRING_DATASOURCE_USERNAME: book-lib
+      SPRING_DATASOURCE_PASSWORD: book-123
+      SPRING_FLYWAY_URL: jdbc:postgresql://localhost:5435/book-lib
+      SPRING_FLYWAY_USER: book-lib
+      SPRING_FLYWAY_PASSWORD: book-123
+      GLOBAL_CONFIGURATION_MAX_LOAN: 1
+      GLOBAL_CONFIGURATION_ALLOW_MEMBER_TO_BORROW_WHEN_OVERDUE_LOAN: false
+      GLOBAL_CONFIGURATION_LOAN_DUE_DAYS: 14
+      JWT_SECRET: a3f8c2e1d7b94f6a2e5c8d1f4b7e9a3c6f2d5e8b1c4a7f0e3d6b9c2f5a8e1d4
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
