@@ -1,5 +1,8 @@
 # Book-Library
 
+## Additional Information
+I put the specific configuration in the member entity to override the global or default configuration. This will be useful if you want to change the default configuration for the specific member.
+
 ## How to run
 1. If you are using intellij idea, just run the main class, otherwise run the jar file
 2. If you want to run using command line, please use the command: `mvn spring-boot:run`
