@@ -1,4 +1,10 @@
 # Book-Library
+Simple Book Library API using Spring Boot, Spring Data JPA, Spring Security, JWT, Flyway, and Docker with the following features:
+- Manage a catalog of books 
+- Manage library members 
+- Allow members to borrow and return book 
+- Enforce configurable borrowing rules (not stored in DB)
+- Provide basic observability (logging, metrics, health checks, etc.)
 
 ## Additional Information
 I put the specific configuration in the member entity to override the global or default configuration. This will be useful if you want to change the default configuration for the specific member.
