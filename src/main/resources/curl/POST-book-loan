@@ -1,0 +1,9 @@
+curl --location 'http://localhost:8080/book/loan' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndWVzdCIsImlhdCI6MTc3NDE0Mzc4MiwiZXhwIjoxNzc0MTQ3MzgyLCJyb2xlIjoiUk9MRV9HVUVTVCJ9.uYSYAk-6Kagh8WkYLrZ6BSHCnNo4syciJIwlujxLuWk' \
+--header 'Cookie: JSESSIONID=26C2B4E7AD966C5098769807ED7F3486' \
+--data '{
+    "bookId": "44f46503-ba3e-4ba9-b1a5-8d5a262682cf",
+    "memberId": "eb47e997-acff-4b22-b6b2-dc322a820e8a",
+    "borrowDateTime": "2026-03-21T09:21:00"
+}'

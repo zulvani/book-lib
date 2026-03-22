@@ -1,0 +1,7 @@
+curl --location 'http://localhost:8080/auth/login' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: JSESSIONID=3DCAF069EF2CC4599D3F2E2BDD7380C7' \
+--data '{
+    "username": "guest",
+    "password": "guest123"
+}'
