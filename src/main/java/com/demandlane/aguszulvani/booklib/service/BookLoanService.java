@@ -107,6 +107,11 @@ public class BookLoanService {
             throw new BusinessException(HttpStatus.BAD_REQUEST, "Load not found");
         }
 
+        if (loan.get().getReturnedAt() != null) {
+            log.error("Returning book: Book already returned: {}", loanId);
+            throw new BusinessException(HttpStatus.BAD_REQUEST, "Book already returned");
+        }
+
         log.info("Returning book: Book returned: {}", loanId);
         Book book = loan.get().getBook();
         book.setAvailableCopies(book.getAvailableCopies() + 1);
