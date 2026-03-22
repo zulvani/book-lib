@@ -25,10 +25,10 @@ public class AuthController {
         this.jwtService = jwtService;
     }
 
-    @Value( "${user.guest.username}")
+    @Value( "${user.staff.username}")
     String guestUserName;
 
-    @Value( "${user.guest.password}")
+    @Value( "${user.staff.password}")
     String guestUserPassword;
 
     @PostMapping("/login")
