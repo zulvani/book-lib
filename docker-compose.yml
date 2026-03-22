@@ -9,11 +9,11 @@ services:
       POSTGRES_USER: book-lib
       POSTGRES_PASSWORD: book123
     ports:
-      - "5435:5432"       # host:container — container always uses 5432
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U aguszulvani -d book-lib"]
+      test: ["CMD-SHELL", "pg_isready -U book-lib -d book-lib-2"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -24,12 +24,12 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5435/book-lib
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/book-lib-2
       SPRING_DATASOURCE_USERNAME: book-lib
-      SPRING_DATASOURCE_PASSWORD: book-123
-      SPRING_FLYWAY_URL: jdbc:postgresql://localhost:5435/book-lib
+      SPRING_DATASOURCE_PASSWORD: book123
+      SPRING_FLYWAY_URL: jdbc:postgresql://postgres:5432/book-lib-2
       SPRING_FLYWAY_USER: book-lib
-      SPRING_FLYWAY_PASSWORD: book-123
+      SPRING_FLYWAY_PASSWORD: book123
       GLOBAL_CONFIGURATION_MAX_LOAN: 1
       GLOBAL_CONFIGURATION_ALLOW_MEMBER_TO_BORROW_WHEN_OVERDUE_LOAN: false
       GLOBAL_CONFIGURATION_LOAN_DUE_DAYS: 14
