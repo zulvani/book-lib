@@ -51,30 +51,7 @@ CREATE TABLE loan (
 );
 
 -- =========================================
--- TABLE: configuration
--- =========================================
-CREATE TABLE configuration (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    max_active_loans INT NOT NULL,
-    allow_member_to_borrow_when_overdue_loan BOOLEAN NOT NULL DEFAULT FALSE,
-    loan_due_days INT NOT NULL
-);
-
--- =========================================
 -- INDEXES
 -- =========================================
 CREATE INDEX idx_loan_book_id ON loan(book_id);
 CREATE INDEX idx_loan_member_id ON loan(member_id);
-
--- =========================================
--- OPTIONAL: SEED CONFIGURATION (1 row)
--- =========================================
-INSERT INTO configuration (
-    max_active_loans,
-    allow_member_to_borrow_when_overdue_loan,
-    loan_due_days
-) VALUES (
-    3,
-    FALSE,
-    7
-);
