@@ -1,4 +1,0 @@
-curl --location --request PUT 'http://localhost:8080/book/loan/returned/e38d9e0e-594a-4f45-a8ba-8f71c84903c8' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndWVzdCIsImlhdCI6MTc3NDE0Mzc4MiwiZXhwIjoxNzc0MTQ3MzgyLCJyb2xlIjoiUk9MRV9HVUVTVCJ9.uYSYAk-6Kagh8WkYLrZ6BSHCnNo4syciJIwlujxLuWk' \
---header 'Cookie: JSESSIONID=26C2B4E7AD966C5098769807ED7F3486' \
---data ''

@@ -12,7 +12,12 @@ I put the specific configuration in the member entity to override the global or 
 
 ## How to test
 1. Run the test class
-2. Run the cURL command inside the `src/test/resources/curl` folder or using Postman
+2. Run the cURL via swagger-ui: http://localhost:8080/swagger-ui/index.html
+
+## TODO
+1. Add more fields in Book and Member to store information about when the book and member created and last updated and the user who created and last updated the book and member
+2. Add the API for the book loan history, so we can see the history of the book loan
+3. Add the API for the member loan history, so we can see the history of the member loan
 
 ## cURL with Postman example
 

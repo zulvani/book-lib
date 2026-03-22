@@ -12,11 +12,6 @@ import java.util.UUID;
 public interface LoanRepository extends JpaRepository<Loan, UUID> {
     Optional<Loan> findById(UUID id);
 
-    // active loans (not returned yet)
-    List<Loan> findByMemberIdAndReturnedAtIsNull(UUID memberId);
-
-    List<Loan> findByBookIdAndReturnedAtIsNull(UUID bookId);
-
     long countByMemberIdAndReturnedAtIsNull(UUID memberId);
 
     // overdue loans
@@ -24,4 +19,12 @@ public interface LoanRepository extends JpaRepository<Loan, UUID> {
             UUID memberId,
             java.time.LocalDateTime now
     );
+
+    // loan history
+    List<Loan> findByMemberId(UUID memberId);
+    List<Loan> findByBookId(UUID bookId);
+    List<Loan> findByMemberIdAndReturnedAtIsNull(UUID memberId);
+    List<Loan> findByMemberIdAndReturnedAtIsNotNull(UUID memberId);
+    List<Loan> findByBookIdAndReturnedAtIsNull(UUID bookId);
+    List<Loan> findByBookIdAndReturnedAtIsNotNull(UUID bookId);
 }
