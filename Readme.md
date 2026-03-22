@@ -16,6 +16,8 @@ I put the specific configuration in the member entity to override the global or 
 
 ## cURL with Postman example
 
+Here is the example of cURL command that I used to test the API. For more API documentation you can visit: http://localhost:8080/swagger-ui/index.html
+
 ### POST auth/login
 #### Request
 ```aiignore
@@ -23,8 +25,8 @@ curl --location 'http://localhost:8080/auth/login' \
 --header 'Content-Type: application/json' \
 --header 'Cookie: JSESSIONID=3DCAF069EF2CC4599D3F2E2BDD7380C7' \
 --data '{
-    "username": "guest",
-    "password": "guest123"
+    "username": "staff",
+    "password": "staff123"
 }'
 ```
 
@@ -135,10 +137,4 @@ curl --location 'http://localhost:8080/actuator/health' \
 {
     "status": "UP"
 }
-```
-
-### GET /v3/api-docs
-#### Response
-```aiignore
-{"openapi":"3.0.1","info":{"title":"OpenAPI definition","version":"v0"},"servers":[{"url":"http://localhost:8080","description":"Generated server url"}],"paths":{"/book/loan/returned/{loan-id}":{"put":{"tags":["book-loan-controller"],"operationId":"returnLoan","parameters":[{"name":"loan-id","in":"path","required":true,"schema":{"type":"string","format":"uuid"}}],"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"$ref":"#/components/schemas/BookLoanResponse"}}}}}}},"/book/loan":{"post":{"tags":["book-loan-controller"],"operationId":"requestLoan","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/BookLoanRequest"}}},"required":true},"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"$ref":"#/components/schemas/BookLoanResponse"}}}}}}},"/auth/login":{"post":{"tags":["auth-controller"],"operationId":"login","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/AuthRequest"}}},"required":true},"responses":{"200":{"description":"OK","content":{"*/*":{"schema":{"type":"object"}}}}}}}},"components":{"schemas":{"Book":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"title":{"type":"string"},"author":{"type":"string"},"isbn":{"type":"string"},"totalCopies":{"type":"integer","format":"int32"},"availableCopies":{"type":"integer","format":"int32"}}},"BookLoanResponse":{"type":"object","properties":{"bookLoan":{"$ref":"#/components/schemas/Loan"},"message":{"type":"string"}}},"Loan":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"book":{"$ref":"#/components/schemas/Book"},"member":{"$ref":"#/components/schemas/Member"},"borrowedAt":{"type":"string","format":"date-time"},"dueDate":{"type":"string","format":"date-time"},"returnedAt":{"type":"string","format":"date-time"}}},"Member":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"name":{"type":"string"},"email":{"type":"string"},"maxActiveLoans":{"type":"integer","format":"int32"},"allowMemberToBorrowWhenOverdueLoan":{"type":"boolean"},"loanDueDays":{"type":"integer","format":"int32"}}},"BookLoanRequest":{"type":"object","properties":{"bookId":{"type":"string","format":"uuid"},"memberId":{"type":"string","format":"uuid"},"borrowDateTime":{"type":"string","format":"date-time"}}},"AuthRequest":{"type":"object","properties":{"username":{"type":"string"},"password":{"type":"string"}}}}}}
 ```
