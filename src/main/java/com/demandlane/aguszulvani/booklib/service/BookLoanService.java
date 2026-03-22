@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class BookLoanService {
@@ -79,5 +80,22 @@ public class BookLoanService {
         bookRepository.save(bookEntity);
 
         return loanRepository.save(loan);
+    }
+
+    @Transactional
+    public Loan returnBook(UUID loanId) throws BusinessException{
+        Optional<Loan> loan = loanRepository.findById(loanId);
+
+        if (loan.isEmpty()) {
+            throw new BusinessException(HttpStatus.BAD_REQUEST, "Load not found");
+        }
+
+        Book book = loan.get().getBook();
+        book.setAvailableCopies(book.getAvailableCopies() + 1);
+        bookRepository.save(book);
+
+        Loan loanEntity = loan.get();
+        loanEntity.setReturnedAt(java.time.LocalDateTime.now());
+        return loanRepository.save(loanEntity);
     }
 }
