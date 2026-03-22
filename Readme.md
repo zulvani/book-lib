@@ -3,12 +3,18 @@
 ## Additional Information
 I put the specific configuration in the member entity to override the global or default configuration. This will be useful if you want to change the default configuration for the specific member.
 
-## How to run
+## How to run 
+### Run Manually
 1. If you are using intellij idea, just run the main class, otherwise run the jar file
 2. If you want to run using command line, please use the command: `mvn spring-boot:run`
 3. If the flyway migration is not working, please run the command: `mvn flyway:migrate`, if it is still not working, please run the SQL inside the  `src/main/resources/db/migration` folder
 4. The default username and password is stored inside application.properties
 5. The default port is 8080
+
+### Run with Docker
+1. Run the docker-compose file: `docker-compose up -d`
+2. The default username and password is stored inside application.properties
+3. The default port is 8080
 
 ## How to test
 1. Run the test class
