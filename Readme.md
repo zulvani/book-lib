@@ -16,8 +16,6 @@ I put the specific configuration in the member entity to override the global or 
 
 ## TODO
 1. Add more fields in Book and Member to store information about when the book and member created and last updated and the user who created and last updated the book and member
-2. Add the API for the book loan history, so we can see the history of the book loan
-3. Add the API for the member loan history, so we can see the history of the member loan
 
 ## cURL with Postman example
 
