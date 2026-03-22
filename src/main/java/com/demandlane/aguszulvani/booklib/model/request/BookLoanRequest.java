@@ -14,9 +14,11 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookLoanRequest {
-
     UUID bookId;
+    /**
+     * optionally, we can get member id from a JWT token,
+     * but if you want to use library staff to make the loan for a member, you can pass member id here
+     */
     UUID memberId;
     LocalDateTime borrowDateTime;
-
 }

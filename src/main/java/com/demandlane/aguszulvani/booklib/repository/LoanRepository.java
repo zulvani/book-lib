@@ -2,9 +2,12 @@ package com.demandlane.aguszulvani.booklib.repository;
 
 import com.demandlane.aguszulvani.booklib.model.entity.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.UUID;
 
+@Repository
 public interface LoanRepository extends JpaRepository<Loan, UUID> {
 
     // active loans (not returned yet)

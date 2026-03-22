@@ -25,12 +25,12 @@ public class Member {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(name = "max_active_loans", nullable = false)
-    private int maxActiveLoans;
+    @Column(name = "max_active_loans")
+    private Integer maxActiveLoans;
 
-    @Column(name = "allow_member_to_borrow_when_overdue_loan", nullable = false)
+    @Column(name = "allow_member_to_borrow_when_overdue_loan")
     private boolean allowMemberToBorrowWhenOverdueLoan;
 
-    @Column(name = "loan_due_days", nullable = false)
-    private int loanDueDays;
+    @Column(name = "loan_due_days")
+    private Integer loanDueDays;
 }
